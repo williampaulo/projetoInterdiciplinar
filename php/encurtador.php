@@ -11,8 +11,11 @@
     // 4 - retorna a url encurtada
 
     // $fullUrl = $_POST['full_url'];
-    $fullUrl = $_POST['origemUrl'];
-    $baseUrl = 'http://localhost:8091/';
+    $fullUrl  = $_POST['origemUrl'];
+    $protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https')
+                === FALSE ? 'http' : 'https';
+    $domain   = $_SERVER['HTTP_HOST'];
+    $baseUrl  = $protocol . '://' . $domain . '/q/';
 
     $servername = "158.69.73.106";
     $username = "root";
