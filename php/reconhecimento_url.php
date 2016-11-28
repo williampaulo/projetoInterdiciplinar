@@ -1,6 +1,5 @@
 <?php
-  header('Location: ../index.php?error=url_empty');
-  return;
+
   if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['q']) {
 
     $keyUrl = $_GET['q'];
