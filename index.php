@@ -74,11 +74,7 @@
 
           req = requestShortUrl();
 
-          req
-          .then( function() {
-            console.log('asdasdsasadsa');
-          })
-          .always( function() {
+          req.always( function() {
             self.css({'background-color': '#fff'});
           });
         }
@@ -109,13 +105,11 @@
 
             } else {
               // alertar error
-              console.log('asd');
             }
 
           },
           error: function(xhr,status,error) {
             // alertar error
-            console.log('error');
           },
           complete(xhr, status) {
             lBtn.stop();

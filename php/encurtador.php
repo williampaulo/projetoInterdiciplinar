@@ -20,12 +20,15 @@
     // Verifica se retornou um boolean
     if (!is_bool($res)) {
       // Retorna a nova url
-      return json_encode(['short_url' => $this->baseUrl . $resSelect]);
+      echo json_encode(['short_url' => $res]);
+      return;
     } else {
       // Retorna um erro
-      return json_encode(['error' => 'url_error_create']);
+      echo json_encode(['error' => 'url_error_create']);
+      return;
     }
   } else {
     // Retorna um error
-    return json_encode(['error' => 'url_empty']);
+    echo json_encode(['error' => 'url_empty']);
+    return;
   }

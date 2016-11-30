@@ -12,6 +12,10 @@ class RecuperaUrl
 
   function __construct()
   {
+    // Verificando se a classe Url já esta carregada
+    if (!$this->url) {
+      $this->url = new Url();
+    }
   }
 
   public function recuperar($keyUrl)

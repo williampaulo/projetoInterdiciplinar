@@ -41,7 +41,7 @@ class Url
       // Verifica se encontrou ao menos uma linha de dados
       if (!!$row && count($row) > 0) {
         // Retorna a url
-        return $baseUrl . $row->id;
+        return $row->id;
 
       } else {
 
