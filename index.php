@@ -22,7 +22,7 @@
     <div class="url-form">
       <form id="short-url-form" class="text-left">
         <div class="etc-url-form">
-          <p>Entre logo abaixo com a url que você deseja encurtar.</p>
+          <p>Entre abaixo com a url que você deseja encurtar.</p>
         </div>
 
         <div class="main-url-form">
