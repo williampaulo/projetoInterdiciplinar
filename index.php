@@ -36,10 +36,10 @@
               <i class="fa fa-chevron-right"></i>
           </button>
         </div>
-        <div class="etc-url-form">
-          <p>Seu novo link: <span>link here</span></p>
-        </div>
 
+        <!--<div class="etc-url-form">
+          <p>Seu novo link: <span>link here</span></p>
+        </div>-->
         <div class="url-form-main-message hide" id="container_result">
           <p>Seu novo link: <span id="span_short_url"></span></p>
         </div>
@@ -62,14 +62,25 @@
         e.preventDefault();
       }
 
-      var lBtn = Ladda.create( document.querySelector( '.btn-request-short-url' ) );
+      var lBtn = Ladda.create( document.querySelector('.btn-request-short-url') );
 
       $('.btn-request-short-url').click(function() {
-
+        var self = $(this);
         var $shortUrlForm = $('#short-url-form');
+        var req;
 
         if($shortUrlForm.is(':valid')) {
-          requestShortUrl();
+          self.css({'background-color': '#aaaaaa'});
+
+          req = requestShortUrl();
+
+          req
+          .then( function() {
+            console.log('asdasdsasadsa');
+          })
+          .always( function() {
+            self.css({'background-color': '#fff'});
+          });
         }
 
       });
@@ -81,7 +92,7 @@
 
         var origemUrl = $originFullUrl.val();
 
-        $.ajax({
+        return $.ajax({
           url: 'php/encurtador.php',
           type: 'POST',
           data: {origemUrl: origemUrl},
@@ -92,8 +103,10 @@
           success: function(result) {
 
             if(typeof result === 'object' && result.shortUrl != undefined) {
+
               $spanShortUrl.text(result.shortUrl);
-              $containerResult.removeClass('hide');
+              $containerResult.removeClass('hide').addClass('show success');
+
             } else {
               // alertar error
               console.log('asd');

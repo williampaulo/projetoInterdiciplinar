@@ -1,56 +1,34 @@
 <?php
 
+namespace home\william\Code\UNP\ProjetoInterdiciplinar\php;
+
+use ProjetoInterdiciplinar\ReconhecimentoUrl;
+
+
+  header('Content-type: application/json');
+
   if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['q']) {
 
-    $keyUrl = $_GET['q'];
+    include 'reconhecimento_url.class.php';
 
-    $servername = "158.69.73.106";
-    $username = "root";
-    $password = "123456";
+    $url = $_GET['q'];
 
-    try {
+    $reconhecimentoUrl = new ReconhecimentoUrl();
 
-      $conn = new PDO("mysql:host=$servername;dbname=shorturl", $username, $password);
-      // definindo o PDO modo de exceção de erro
-      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $resUrl = $reconhecimentoUrl->reconhecer($url);
 
-      // echo "Connected successfully";
+    if (!is_bool($resUrl)) {
 
-      // checa se a url existe
-      $sqlCheca = "
-        SELECT id, value FROM url WHERE id = :keyUrl;
-      ";
+      header('Location: ' . $resUrl);
+      return;
 
-      $checked = $conn->prepare($sqlCheca);
-      $checked->bindParam(':keyUrl', $keyUrl, PDO::PARAM_STR);
+    } else {
 
-      if ($checked->execute()) {
-
-        $row = $checked->fetch(PDO::FETCH_OBJ);
-
-        if (!!$row && count($row) > 0) {
-
-          $redirectUrl = $row->value;
-
-          header('Location: ' . $redirectUrl);
-          return;
-
-        } else {
-
-          //header('Location: ../index.php?error=url_not_found');
-          return;
-
-        }
-      } else {
-        throw new Exception("Error Processing Request", 1);
-      }
-
-    } catch(PDOException $e) {
-      echo "Connection failed: " . $e->getMessage();
+      header('Location: url-not-found');
+      return;
     }
 
   } else {
 
-    //header('Location: ../index.php?error=url_empty');
-
+    header('Location: ../');
   }

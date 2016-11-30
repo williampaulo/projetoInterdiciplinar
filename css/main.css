@@ -131,6 +131,7 @@ label.form-invalid:after {
   color: #999999;
   border-left: 3px solid transparent;
   border-radius: 3px;
+  margin-top: 8px;
   margin-bottom: 8px;
   font-weight: bold;
   height: 0;
