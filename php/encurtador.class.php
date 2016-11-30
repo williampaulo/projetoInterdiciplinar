@@ -1,9 +1,10 @@
 <?php
 
+// Incluindo a classe url
 include 'url.class.php';
 
 /**
-*
+* Encurtador, execulta o processo de encurtamento
 */
 class Encurtador
 {
@@ -31,32 +32,17 @@ class Encurtador
 
     if (!is_bool($resSelect)) {
 
-      $shortUrl = [
-        'shortUrl' => $this->baseUrl . $resSelect,
-      ];
-
-      return json_encode($shortUrl);
+      return $this->baseUrl . $resSelect;
 
     } else {
 
       $resInsert = $this->url->insertUrl($url);
 
       if (!is_bool($resInsert)) {
-
-
-        $shortUrl = [
-          'shortUrl' => $this->baseUrl . $resInsert,
-          'eita' => 'sa'
-        ];
-
-        return json_encode($shortUrl);
-
+        return $this->baseUrl . $resInsert;
       } else {
-
-        echo json_encode(['error' => 'url_error_create']);
-
+        return false;
       }
-
     }
   }
 }

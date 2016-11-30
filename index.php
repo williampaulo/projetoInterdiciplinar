@@ -102,9 +102,9 @@
           },
           success: function(result) {
 
-            if(typeof result === 'object' && result.shortUrl != undefined) {
+            if(typeof result === 'object' && result.short_url != undefined) {
 
-              $spanShortUrl.text(result.shortUrl);
+              $spanShortUrl.text(result.short_url);
               $containerResult.removeClass('hide').addClass('show success');
 
             } else {
