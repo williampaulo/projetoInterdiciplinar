@@ -1,8 +1,5 @@
 <?php
 
-use ProjetoInterdiciplinar\Encurtador;
-
-
   header('Content-type: application/json');
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['origemUrl']) {

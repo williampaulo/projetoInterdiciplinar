@@ -1,13 +1,7 @@
 <?php
 
-namespace ProjetoInterdiciplinar;
-
-use ProjetoInterdiciplinar\Configdb;
-
 include 'configdb.class.php';
 
-
-// include 'config_db.class.php';
 /**
 *
 */

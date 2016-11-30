@@ -1,9 +1,5 @@
 <?php
 
-namespace ProjetoInterdiciplinar;
-
-use ProjetoInterdiciplinar\Url;
-
 include 'url.class.php';
 
 /**
@@ -31,7 +27,7 @@ class Encurtador
   public function encurtar($url)
   {
 
-    $resSelect = $this->url->retornaUrl($url);
+    $resSelect = $this->url->retornaUrlPorUrl($url);
 
     if (!is_bool($resSelect)) {
 

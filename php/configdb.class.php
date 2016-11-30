@@ -1,7 +1,5 @@
 <?php
 
-namespace ProjetoInterdiciplinar;
-
 class Configdb {
     static $DB_DRIVER    = 'mysql';
     static $DB_SERVER    = '158.69.73.106';

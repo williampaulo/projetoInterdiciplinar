@@ -1,9 +1,5 @@
 <?php
 
-namespace ProjetoInterdiciplinar;
-
-use ProjetoInterdiciplinar\Database;
-
 include 'database.class.php';
 
 
@@ -22,7 +18,7 @@ class Url
     }
   }
 
-  public function retornaUrl($fullUrl)
+  public function retornaUrlPorUrl($fullUrl)
   {
 
     $sql = "
@@ -49,7 +45,31 @@ class Url
 
       return false;
     }
+  }
 
+  public function retornaUrlPorId($id)
+  {
+
+    $sql = "
+      SELECT id, value FROM url WHERE id = :id;
+    ";
+
+    $select = $this->db->prepare($sql);
+    $select->bindParam(':id', $id, \PDO::PARAM_STR);
+
+    if ($select->execute()) {
+
+      $row = $select->fetch( \PDO::FETCH_OBJ );
+
+      if (!!$row && count($row) > 0) {
+
+        return $row->value;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
   }
 
   public function insertUrl($fullUrl)

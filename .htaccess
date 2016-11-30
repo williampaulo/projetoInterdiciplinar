@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    RewriteRule ^q/([a-zA-Z0-9-]+)/?$ /php/reconhecimento_url.php?q=$1 [NC]
+    RewriteRule ^q/([a-zA-Z0-9-]+)/?$ /php/reconhecer_url.php?q=$1 [NC]
 
 </IfModule>
